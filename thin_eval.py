@@ -32,14 +32,10 @@ def main():
     center        = ( interSectionA + interSectionB ) * 0.5
 
     plt.plot( interSectionA, m, 'o', color='black' )
-    plt.annotate( str(interSectionA), xy=(interSectionA, m), 
-									  xytext=(interSectionA-10, m+40), 
-									  arrowprops=dict( arrowstyle="simple", connectionstyle="arc3" ) )
+    plt.annotate( str(interSectionA), xy=(interSectionA, m), xytext=(interSectionA-10, m+40), arrowprops=dict( arrowstyle="simple", connectionstyle="arc3" ) )
 
     plt.plot( interSectionB, m, 'o', color='black' )
-    plt.annotate( str(interSectionB), xy=(interSectionB, m), 
-									  xytext=(interSectionB+5, m+40), 
-									  arrowprops=dict( arrowstyle="simple", connectionstyle="arc3" ) )
+    plt.annotate( str(interSectionB), xy=(interSectionB, m), xytext=(interSectionB+5, m+40), arrowprops=dict( arrowstyle="simple", connectionstyle="arc3" ) )
 
     plt.text( center-6, m+5, 'length = ' + str(length) )
     plt.quiver( center, m, interSectionA-center+0.5, 0, angles='xy', scale_units='xy', scale=1, color='r' )
