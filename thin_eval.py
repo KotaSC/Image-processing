@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 def main():
     
     # 入力画像を読み込み
-    img = cv2.imread( "th0.3_dim2_cropUpside.bmp" )
+    img = cv2.imread( "th0.3_dim3_cropDownside.bmp" )
     
     # グレースケール変換
     gray_img = cv2.cvtColor( img, cv2.COLOR_RGB2GRAY )
@@ -26,25 +26,41 @@ def main():
 
     plt.axhline( y=m, color='r', linestyle='--' )
 
-    interSectionA = 20.5
-    interSectionB = 41.5
-    length        = round( interSectionB - interSectionA, 1 )
-    center        = ( interSectionA + interSectionB ) * 0.5
+    interSectionA = 19.6
+    interSectionB = 24.2
+    interSectionC = 37.4
+    interSectionD = 41.5
+
+    lengthAB = round( interSectionB - interSectionA, 1 )
+    centerAB = ( interSectionA + interSectionB ) * 0.5
+
+    lengthCD = round( interSectionD - interSectionC, 1 )
+    centerCD = ( interSectionC + interSectionD ) * 0.5
 
     plt.plot( interSectionA, m, 'o', color='black' )
-    plt.annotate( str(interSectionA), xy=(interSectionA, m), xytext=(interSectionA-10, m+40), arrowprops=dict( arrowstyle="simple", connectionstyle="arc3" ) )
-
+    plt.text( interSectionA-4, m+5, str( interSectionA ) )
     plt.plot( interSectionB, m, 'o', color='black' )
-    plt.annotate( str(interSectionB), xy=(interSectionB, m), xytext=(interSectionB+5, m+40), arrowprops=dict( arrowstyle="simple", connectionstyle="arc3" ) )
+    plt.text( interSectionB+1, m+5, str( interSectionB ) )
+    plt.plot( [interSectionA, interSectionB], [m, m], linestyle='-', color='black' )
+    plt.annotate( str(lengthAB), 
+				  xy=(centerAB, m-3), 
+				  xytext=(centerAB-10, m-30), 
+				  arrowprops=dict( connectionstyle='arc3, rad=0.4', width=2, headwidth=10, headlength=7 ) )
 
-    plt.text( center-6, m+5, 'length = ' + str(length) )
-    plt.quiver( center, m, interSectionA-center+0.5, 0, angles='xy', scale_units='xy', scale=1, color='r' )
-    plt.quiver( center, m, interSectionB-center-0.5, 0, angles='xy', scale_units='xy', scale=1, color='r' )
-
-    plt.xlabel( "y-coordinate of image" )
+    plt.plot( interSectionC, m, 'o', color='black')
+    plt.text( interSectionC-4, m+5, str( interSectionC ) )
+    plt.plot( interSectionD, m, 'o', color='black')
+    plt.text( interSectionD+1, m+5, str( interSectionD ) )
+    plt.plot( [interSectionC, interSectionD], [m, m], linestyle='-', color='black' )
+    plt.annotate( str(lengthCD),
+				  xy=(centerCD, m-3),
+				  xytext=(centerCD+10, m-30),
+				  arrowprops=dict( connectionstyle='arc3, rad=-0.4', width=2, headwidth=10, headlength=7 ) )
+    
+    plt.xlabel( "Vertical component of edge" )
     plt.ylabel( "Pixel Value" )
 
-    plt.savefig( "th0.3_dim2_up_hw.png" )
+    plt.savefig( "th0.3_dim3_down_hw.png" )
 
     plt.show()
 
