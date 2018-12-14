@@ -25,6 +25,7 @@ def main():
     gray = cv2.cvtColor( img, cv2.COLOR_RGB2GRAY )
     gray_nonzero = gray[gray>0]   # 輝度値0の部分以外
 
+    plt.figure(figsize=(10, 8))
     ax = plt.axes(facecolor='#E6E6E6')
     ax.set_axisbelow(True)
 
