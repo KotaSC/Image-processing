@@ -29,11 +29,10 @@ def main():
     ax.set_axisbelow(True)
 
     ax.set_title("Histgram of Pixel Value of Gray Scale Image", fontsize=12)
-    ax.hist(gray_nonzero.ravel(), bins=100, color='blue', alpha=0.5, label="Input image")
+    ax.hist(gray_nonzero.ravel(), bins=100, color='blue', alpha=0.5)
     ax.set_xlabel("Pixel value", fontsize=12, color='black')
     ax.set_ylabel("Number of pixels", fontsize=12, color='black')
     ax.set_xlim([0, 255])
-    ax.legend(fontsize=12)
 
     # 出力ファイル名
     fig_name = args[2]
