@@ -13,6 +13,8 @@ def multi_func(x):
 
     return np.piecewise(x, condlist, funclist)
 
+plt.figure(figsize=(10, 8))
+
 plt.xlim([0,1])
 plt.ylim([0,1])
 

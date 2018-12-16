@@ -19,6 +19,8 @@ def main():
     print( val )
     print( m )
 
+    plt.figure(figsize=(10, 8))
+
     plt.xlim( [0, height] )
     plt.ylim( [0, 255] )
 
