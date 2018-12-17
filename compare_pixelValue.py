@@ -54,6 +54,7 @@ def main():
     ax.set_xlabel("Pixel value", fontsize=12, color='black')
     ax.set_ylabel("Number of pixels", fontsize=12, color='black')
     ax.set_xlim([0, 255])
+    ax.set_ylim([0, 40000])
     ax.legend(fontsize=12)
 
     # 出力ファイル名

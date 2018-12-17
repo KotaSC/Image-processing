@@ -27,7 +27,7 @@ ax.set_axisbelow(True)
 ax.set_xlim([0, 1])
 ax.set_ylim([0, 1])
 
-ax.set_title("Histgram of Pixel Value of Gray Scale Image", fontsize=12)
+ax.set_title("Function used for feature extraction", fontsize=12)
 ax.set_xlabel("Feature value F", fontsize=12, color='black')
 ax.set_ylabel("Probability P", fontsize=12, color='black')
 
