@@ -29,12 +29,12 @@ def main():
     ax = plt.axes(facecolor='#E6E6E6')
     ax.set_axisbelow(True)
 
-    ax.set_title("Histgram of Pixel Value of Gray Scale Image", fontsize=12)
+    ax.set_title("Histgram of Pixel Value of Gray Scale Image", fontsize=15)
     ax.hist(gray_nonzero.ravel(), bins=100, color='blue', alpha=0.5)
-    ax.set_xlabel("Pixel value", fontsize=12, color='black')
-    ax.set_ylabel("Number of pixels", fontsize=12, color='black')
+    ax.set_xlabel("Pixel value", fontsize=15, color='black')
+    ax.set_ylabel("Number of pixels", fontsize=15, color='black')
     ax.set_xlim([0, 255])
-    ax.set_ylim([0, 40000])
+    # ax.set_ylim([0, 12000])
 
     # 出力ファイル名
     fig_name = args[2]

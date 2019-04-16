@@ -37,7 +37,7 @@ def main():
     ax = plt.axes(facecolor='#E6E6E6')
     ax.set_axisbelow(True)
 
-    ax.set_title("Histgram of Pixel Value of Gray Scale Image", fontsize=12)
+    ax.set_title("Comparison of Two Pixel Value Histgram of Extract and Non Extract Image", fontsize=15)
     # ax.hist([gray1_nonzero.ravel(), gray2_nonzero.ravel()],
     #         bins=100,
     #         color=['blue', 'red'],
@@ -48,13 +48,13 @@ def main():
     #         color=['blue', 'red', 'green'],
     #         alpha=0.5,
     #         label=["dim1", "dim2", "dim3"])
-    ax.hist(gray1_nonzero.ravel(), bins=100, color='blue',   alpha=0.5, label="Non Extract")
-    ax.hist(gray2_nonzero.ravel(), bins=100, color='red',    alpha=0.5, label="Extract\nThreshold = 0.6")
+    ax.hist(gray1_nonzero.ravel(), bins=100, color='blue',   alpha=0.5, label="Threshold  = 0.3")
+    ax.hist(gray2_nonzero.ravel(), bins=100, color='red',    alpha=0.5, label="Threshold  = 0.3\nDimension = 3.0")
     # ax.hist(gray3_nonzero.ravel(), bins=100, color='green',  alpha=0.5, label="dim3")
-    ax.set_xlabel("Pixel value", fontsize=12, color='black')
-    ax.set_ylabel("Number of pixels", fontsize=12, color='black')
+    ax.set_xlabel("Pixel value", fontsize=15, color='black')
+    ax.set_ylabel("Number of pixels", fontsize=15, color='black')
     ax.set_xlim([0, 255])
-    ax.set_ylim([0, 40000])
+    ax.set_ylim([0, 12000])
     ax.legend(fontsize=12)
 
     # 出力ファイル名

@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
 from matplotlib import cycler
 
-def multi_func(x, th, dim, grad):
+def multi_func(x, th, dim, grad, fm):
 
-    condlist = [x <= th , (x > th) & (x <= 1)]
-    funclist = [lambda a: 0, lambda a: grad*((a-th)**dim)]
+    condlist = [x < th , (x >= th) & (x <= 1)]
+    funclist = [lambda a: 0.0, lambda a: grad*((a-thr)**dim)]
 
     return np.piecewise(x, condlist, funclist)
 
@@ -20,6 +20,8 @@ plt.rc('ytick', direction='out', color='black')
 plt.rc('patch', edgecolor='#E6E6E6')
 plt.rc('lines', linewidth=2)
 
+plt.rcParams["font.size"] = 14
+
 plt.figure(figsize=(10, 8))
 ax = plt.axes(facecolor='#E6E6E6')
 ax.set_axisbelow(True)
@@ -27,18 +29,23 @@ ax.set_axisbelow(True)
 ax.set_xlim([0, 1])
 ax.set_ylim([0, 1])
 
-ax.set_title("Function used for feature extraction", fontsize=12)
-ax.set_xlabel("Feature value F", fontsize=12, color='black')
-ax.set_ylabel("Probability P", fontsize=12, color='black')
+plt.xticks([0.2, 0.4, 0.6, 0.8, 1.0])
 
-x = np.linspace(0, 1, 100)
+
+ax.set_title(r"Realation between Feature value $\hat{F}^{(i)}$ and Function ${\rm g}(\hat{F}^{(i)})$", fontsize=20)
+ax.set_xlabel(r"Feature value $\hat{F}^{(i)}$", fontsize=20, color='black')
+ax.set_ylabel(r"Function ${\rm g}(\hat{F}^{(i)})$", fontsize=20, color='black')
 
 th    = input('閾値を入力してください         >>')
 ftMax = input('特徴量の最大値を入力してください >>')
 dim   = input('関数の次元を入力してください    >>')
-grad = 1.0/((1.0-float(th)/float(ftMax))**float(dim))
 
-y = multi_func(x, float(th), float(dim), grad)
+thr = float(th)/float(ftMax)
+denom = 1.0 - thr
+grad = 1.0/(denom**float(dim))
+x = np.linspace(0, 1, 1000)
+
+y = multi_func(x, float(thr), float(dim), grad, float(ftMax))
 
 plt.plot(x,y)
 
