@@ -16,11 +16,18 @@ def main():
     plt.rc('patch', edgecolor='#E6E6E6')
     plt.rc('lines', linewidth=2)
     
+    # 目盛りに関する設定
     plt.rcParams["xtick.major.size"] = 10
     plt.rcParams["xtick.minor.size"] = 5
     plt.rcParams["ytick.major.size"] = 10
     plt.rcParams["ytick.minor.size"] = 5
     plt.rcParams["font.size"]        = 14
+
+    # 凡例に関する設定
+    plt.rcParams["legend.markerscale"] = 1
+    plt.rcParams["legend.fancybox"] = False
+    plt.rcParams["legend.framealpha"] = 1
+    plt.rcParams["legend.edgecolor"] = 'black'
 
     image_nonThinning = args[1]
 
@@ -57,14 +64,14 @@ def main():
     lengthAB = round( interSectionB - interSectionA, 1 )
     centerAB = ( interSectionA + interSectionB ) * 0.5
 
-    ax.plot( interSectionA, halh_val, marker='s', markersize=7, color='black', alpha=1.0 )
-    ax.plot( interSectionB, halh_val, marker='s', markersize=7, color='black', alpha=1.0 )
+    ax.plot( interSectionA, halh_val, 's', markersize=7, color='black', alpha=1.0, label="Half the maximum pixel value" )
+    ax.plot( interSectionB, halh_val, 's', markersize=7, color='black', alpha=1.0 )
    
-    ax.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='--', color='black' )
+    ax.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='--', color='black', label='Half-Width' )
 
     ax.plot( ind_max_val, max_val-1, 'o', color='black' )
 
-    # ax.legend( fontsize=20, flameon=True )
+    ax.legend( fontsize=12, frameon=True, facecolor='w' )
 
     ax.set_xlabel("Vertical component of the edge", fontsize=20, color='black')
     ax.set_ylabel("Pixel Value", fontsize=20, color='black')
