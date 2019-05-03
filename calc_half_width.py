@@ -34,6 +34,9 @@ def main():
     height, width = gray_nonThinning.shape[0], gray_nonThinning.shape[1]
 
     val_NonThinning = calc_half_width( gray_nonThinning, height, width )
+    m   = max( val ) * 0.5
+    mx  = max( val )
+    x = np.argmax( val )
 
     plt.figure( figsize=(10, 8) )
     ax = plt.axes( facecolor='w')
@@ -45,7 +48,27 @@ def main():
     plt.xticks([5, 10, 15, 20, 25])
 
     ax.plot( val_NonThinning, color='black', marker='.', markersize=15 )
-   
+
+    interSectionA = 12.50
+    interSectionB = 21.40
+
+    lengthAB = round( interSectionB - interSectionA, 1 )
+    centerAB = ( interSectionA + interSectionB ) * 0.5
+
+    plt.plot( interSectionA, m, 'o', color='black' )
+    plt.text( interSectionA-2.0, m+5, "10.50", size=12 )
+    plt.plot( interSectionB, m, 'o', color='black' )
+    plt.text( interSectionB+0.3, m+5, "13.50", size=12 )
+    plt.plot( [interSectionA, interSectionB], [m, m], linestyle='-', color='black' )
+
+    plt.plot( x, mx-1, 'o', color='black' )
+    plt.plot( [5, interSectionA-0.1], [m, m], linestyle='--', color='b', alpha=0.7 )
+    plt.plot( [5, x-0.1], [mx, mx], linestyle='--', color='b', alpha=0.7 )
+
+    plt.text( 3.3, mx-1, r"$f_{max}$", size=12)
+    plt.text( 3.3, m-2, r"$\frac{f_{max}}{2}$", size=15)
+    plt.text( centerAB-1.50, m-9.0, r"$HW = 8.90$", size=11 )
+
     # ax.legend( fontsize=20, flameon=True )
 
     ax.set_xlabel("Vertical component of the edge", fontsize=20, color='black')
