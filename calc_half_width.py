@@ -34,9 +34,9 @@ def main():
     height, width = gray_nonThinning.shape[0], gray_nonThinning.shape[1]
 
     val_NonThinning = calc_half_width( gray_nonThinning, height, width )
-    m   = max( val ) * 0.5
-    mx  = max( val )
-    x = np.argmax( val )
+    halh_val    = max( val_NonThinning ) * 0.5
+    max_val     = max( val_NonThinning )
+    ind_max_val = np.argmax( val_NonThinning )
 
     plt.figure( figsize=(10, 8) )
     ax = plt.axes( facecolor='w')
@@ -49,25 +49,25 @@ def main():
 
     ax.plot( val_NonThinning, color='black', marker='.', markersize=15 )
 
-    interSectionA = 12.50
-    interSectionB = 21.40
+    interSectionA = 10.50
+    interSectionB = 13.50
 
     lengthAB = round( interSectionB - interSectionA, 1 )
     centerAB = ( interSectionA + interSectionB ) * 0.5
 
-    plt.plot( interSectionA, m, 'o', color='black' )
-    plt.text( interSectionA-2.0, m+5, "10.50", size=12 )
-    plt.plot( interSectionB, m, 'o', color='black' )
-    plt.text( interSectionB+0.3, m+5, "13.50", size=12 )
-    plt.plot( [interSectionA, interSectionB], [m, m], linestyle='-', color='black' )
+    plt.plot( interSectionA, halh_val, marker='s', color='black' )
+    # plt.text( interSectionA-2.0, m+5, "10.50", size=12 )
+    plt.plot( interSectionB, halh_val, marker='s', color='black' )
+    # plt.text( interSectionB+0.3, m+5, "13.50", size=12 )
+    plt.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='-', color='black' )
 
-    plt.plot( x, mx-1, 'o', color='black' )
-    plt.plot( [5, interSectionA-0.1], [m, m], linestyle='--', color='b', alpha=0.7 )
-    plt.plot( [5, x-0.1], [mx, mx], linestyle='--', color='b', alpha=0.7 )
+    plt.plot( ind_max_val, max_val-1, 'o', color='black' )
+    plt.plot( [5, interSectionA-0.1], [halh_val, halh_val], linestyle='--', color='black', alpha=0.7 )
+    plt.plot( [5, ind_max_val-0.1], [max_val, max_val], linestyle='--', color='black', alpha=0.7 )
 
-    plt.text( 3.3, mx-1, r"$f_{max}$", size=12)
-    plt.text( 3.3, m-2, r"$\frac{f_{max}}{2}$", size=15)
-    plt.text( centerAB-1.50, m-9.0, r"$HW = 8.90$", size=11 )
+    plt.text( 3.3, max_val-1, r"$f_{max}$", size=12)
+    plt.text( 3.3, halh_val-2, r"$\frac{f_{max}}{2}$", size=15)
+    plt.text( centerAB-1.50, max_val-9.0, r"$HW = 8.90$", size=11 )
 
     # ax.legend( fontsize=20, flameon=True )
 
