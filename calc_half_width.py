@@ -45,29 +45,23 @@ def main():
     ax.set_xlim([0, height-1])
     ax.set_ylim([0, 255])
 
-    plt.xticks([5, 10, 15, 20])
-
     ax.plot( val_NonThinning, color='black', marker='.', markersize=15 )
 
     interSectionA = 10.50
     interSectionB = 13.50
 
+    plt.xticks([5, interSectionA, interSectionB, 15, 20])
+    plt.yticks([50, 100, halh_val, 150, 200, max_val, 250])
+
     lengthAB = round( interSectionB - interSectionA, 1 )
     centerAB = ( interSectionA + interSectionB ) * 0.5
 
-    ax.plot( interSectionA, halh_val, marker='s', color='black', alpha=1.0 )
-    # plt.text( interSectionA-2.0, m+5, "10.50", size=12 )
-    ax.plot( interSectionB, halh_val, marker='s', color='black', alpha=1.0 )
-    # plt.text( interSectionB+0.3, m+5, "13.50", size=12 )
-    ax.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='-', color='black' )
+    ax.plot( interSectionA, halh_val, marker='s', markersize=7, color='black', alpha=1.0 )
+    ax.plot( interSectionB, halh_val, marker='s', markersize=7, color='black', alpha=1.0 )
+   
+    ax.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='--', color='black' )
 
     ax.plot( ind_max_val, max_val-1, 'o', color='black' )
-    ax.plot( [5, interSectionA-0.1], [halh_val, halh_val], linestyle='--', color='black', alpha=0.7 )
-    ax.plot( [5, ind_max_val-0.1], [max_val, max_val], linestyle='--', color='black', alpha=0.7 )
-
-    ax.text( 3.3, max_val-1, r"$f_{max}$", size=12)
-    ax.text( 3.3, halh_val-2, r"$\frac{f_{max}}{2}$", size=15)
-    ax.text( centerAB-1.50, max_val-9.0, r"$HW = 8.90$", size=11 )
 
     # ax.legend( fontsize=20, flameon=True )
 
