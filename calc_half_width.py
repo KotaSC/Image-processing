@@ -50,8 +50,9 @@ def main():
     interSectionA = 10.50
     interSectionB = 13.50
 
-    plt.xticks([5, interSectionA, interSectionB, 15, 20])
+    plt.xticks([4, 8, interSectionA, 12, interSectionB, 16, 24])
     plt.yticks([50, 100, halh_val, 150, 200, max_val, 250])
+    ax.xaxis.set_minor_locator(plt.MultipleLocator(interSectionA))
 
     lengthAB = round( interSectionB - interSectionA, 1 )
     centerAB = ( interSectionA + interSectionB ) * 0.5
