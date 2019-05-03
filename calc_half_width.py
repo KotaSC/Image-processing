@@ -54,22 +54,16 @@ def main():
 
     ax.plot( val_NonThinning, color='black', marker='.', markersize=15 )
 
-    interSectionA = 10.50
-    interSectionB = 13.50
-
-    plt.xticks([4, 8, interSectionA, 12, interSectionB, 16, 24])
-    plt.yticks([50, 100, halh_val, 150, 200, max_val, 250])
-    ax.xaxis.set_minor_locator(plt.MultipleLocator(interSectionA))
-
-    lengthAB = round( interSectionB - interSectionA, 1 )
-    centerAB = ( interSectionA + interSectionB ) * 0.5
+    interSectionA = 10.5
+    interSectionB = 13.5
 
     ax.plot( interSectionA, halh_val, 's', markersize=7, color='black', alpha=1.0, label="Half the maximum pixel value" )
     ax.plot( interSectionB, halh_val, 's', markersize=7, color='black', alpha=1.0 )
    
     ax.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='--', color='black', label='Half-Width' )
-
-    ax.plot( ind_max_val, max_val-1, 'o', color='black' )
+    
+    ax.set_xticks([0, interSectionA, interSectionB, 24])
+    ax.set_yticks([halh_val, max_val, 255])
 
     ax.legend( fontsize=12, frameon=True, facecolor='w' )
 
