@@ -73,7 +73,7 @@ def main():
 
     ax.legend( fontsize=12, frameon=True, facecolor='w' )
 
-    ax.set_xlabel("Vertical component of the edge", fontsize=20, color='black')
+    ax.set_xlabel("Y coordinate of feature region image", fontsize=20, color='black')
     ax.set_ylabel("Pixel Value", fontsize=20, color='black')
 
     fig_name = args[2]
