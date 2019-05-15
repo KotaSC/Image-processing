@@ -29,21 +29,21 @@ def main():
     plt.rcParams["legend.framealpha"] = 1
     plt.rcParams["legend.edgecolor"] = 'black'
 
-    image_nonThinning = args[1]
+    image = args[1]
 
     # 入力画像を読み込み
-    img_nonthinning = cv2.imread( image_nonThinning )
+    img = cv2.imread( image )
 
     # グレースケール変換
-    gray_nonThinning = cv2.cvtColor( img_nonthinning, cv2.COLOR_RGB2GRAY )
+    gray = cv2.cvtColor( img, cv2.COLOR_RGB2GRAY )
   
     # 画像の縦幅と横幅を求める
-    height, width = gray_nonThinning.shape[0], gray_nonThinning.shape[1]
+    height, width = gray.shape[0], gray.shape[1]
 
-    val_NonThinning = calc_half_width( gray_nonThinning, height, width )
-    halh_val    = max( val_NonThinning ) * 0.5
-    max_val     = max( val_NonThinning )
-    ind_max_val = np.argmax( val_NonThinning )
+    val         = calc_half_width( gray, height, width )
+    halh_val    = max( val ) * 0.5
+    max_val     = max( val )
+    ind_max_val = np.argmax( val )
 
     plt.figure( figsize=(10, 8) )
     ax = plt.axes( facecolor='w')
@@ -52,7 +52,7 @@ def main():
     ax.set_xlim([0, height-1])
     ax.set_ylim([0, 255])
 
-    ax.plot( val_NonThinning, color='black', marker='.', markersize=15 )
+    ax.plot( val, color='black', marker='.', markersize=15 )
 
     interSectionA = 10.5
     interSectionB = 13.5
