@@ -15,7 +15,7 @@ def main():
     plt.rc('ytick', direction='in', color='black')
     plt.rc('patch', edgecolor='#E6E6E6')
     plt.rc('lines', linewidth=2)
-    
+
     # 目盛りに関する設定
     plt.rcParams["xtick.major.size"] = 10
     plt.rcParams["xtick.minor.size"] = 5
@@ -36,7 +36,7 @@ def main():
 
     # グレースケール変換
     gray = cv2.cvtColor( img, cv2.COLOR_RGB2GRAY )
-  
+
     # 画像の縦幅と横幅を求める
     height, width = gray.shape[0], gray.shape[1]
 
@@ -52,23 +52,23 @@ def main():
     ax.set_xlim([0, height-1])
     ax.set_ylim([0, 255])
 
-    ax.plot( val, color='black', marker='.', markersize=15 )
+    ax.plot( val, color='black' )
 
-    interSectionA = 10.5
-    interSectionB = 13.5
+    interSectionA = 5.5
+    interSectionB = 8.5
 
-    ax.plot( interSectionA, halh_val, 's', markersize=7, color='black', alpha=1.0, label="Half the maximum pixel value" )
-    ax.plot( interSectionB, halh_val, 's', markersize=7, color='black', alpha=1.0 )
-   
+    ax.plot( interSectionA, halh_val, '.', markersize=18, color='black', alpha=1.0, label="Half of the maximum pixel value" )
+    ax.plot( interSectionB, halh_val, '.', markersize=18, color='black', alpha=1.0 )
+
     ax.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='--', color='black', label='Half-Width' )
-    
-    ax.set_xticks([0, interSectionA, interSectionB, 24])
-    ax.set_yticks([halh_val, max_val, 255])
 
-    ax.legend( fontsize=12, frameon=True, facecolor='w' )
+    ax.set_xticks( [interSectionA, interSectionB, 13] )
+    ax.set_yticks( [halh_val, max_val, 255] )
 
-    ax.set_xlabel("Y coordinate of feature region image", fontsize=20, color='black')
-    ax.set_ylabel("Pixel Value", fontsize=20, color='black')
+    ax.legend( fontsize=13, frameon=True, facecolor='w' )
+
+    ax.set_xlabel( "Feature region width", fontsize=22, color='black' )
+    ax.set_ylabel( "Pixel Value", fontsize=22, color='black' )
 
     fig_name = args[2]
 
@@ -77,20 +77,19 @@ def main():
 
 def calc_half_width( gray, h, w ):
 
-	value = []
+    value = []
 
-	for y in range( h ):
+    for y in range( h ):
 
-		sumx = 0
+        sumx = 0
 
-		for x in range( w ):
+        for x in range( w ):
 
-			# x軸方向の画素値の合計を求める
-			sumx += gray[ y, x ]
+            sumx += gray[y, x]
 
-		value.append( sumx / w )
+        value.append( sumx/w )
 
-	return value
+    return value
 
 if __name__ == "__main__":
     main()
