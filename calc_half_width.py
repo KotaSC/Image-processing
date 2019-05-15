@@ -54,15 +54,15 @@ def main():
 
     ax.plot( val, color='black' )
 
-    interSectionA = 5.5
-    interSectionB = 8.5
+    interSectionA = 4.1
+    interSectionB = 18.0
 
     ax.plot( interSectionA, halh_val, '.', markersize=18, color='black', alpha=1.0, label="Half of the maximum pixel value" )
     ax.plot( interSectionB, halh_val, '.', markersize=18, color='black', alpha=1.0 )
 
     ax.plot( [interSectionA, interSectionB], [halh_val, halh_val], linestyle='--', color='black', label='Half-Width' )
 
-    ax.set_xticks( [interSectionA, interSectionB, 13] )
+    ax.set_xticks( [0, interSectionA, interSectionB, 22] )
     ax.set_yticks( [halh_val, max_val, 255] )
 
     ax.legend( fontsize=13, frameon=True, facecolor='w' )
