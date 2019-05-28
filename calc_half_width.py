@@ -30,7 +30,7 @@ def main():
     plt.rcParams["legend.edgecolor"] = 'black'
 
     image = args[1]
-
+    
     # 入力画像を読み込み
     img = cv2.imread( image )
 
