@@ -13,6 +13,7 @@ def multi_func(x, th, dim, grad, amin, amax, fth):
     return np.piecewise(x, condlist, funclist)
 
 colors = cycler('color', ['#EE6666', '#3388BB', '#9988DD', '#EECC55', '#88BB44', '#FFBBBB'])
+
 plt.rc('axes',  facecolor='#E6E6E6', edgecolor='black', axisbelow=True, grid=False, prop_cycle=colors)
 plt.rc('grid',  color='w', linestyle='solid')
 plt.rc('xtick', direction='in', color='black')
