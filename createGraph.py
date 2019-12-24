@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import sys
 args = sys.argv
@@ -45,7 +46,7 @@ ax.set_ylabel(r"opacity ${\alpha( f)}$", fontsize=22, color='black')
 a_max = 1.0
 a_min = 0.2
 fth   = 0.3
-d     = 2.0
+d     = 0.0
 Fth   = 1.0
 
 denom = Fth - fth
@@ -60,6 +61,10 @@ plt.gca().yaxis.set_major_formatter(plt.FormatStrFormatter('%.1f'))
 plt.gca().xaxis.set_major_formatter(plt.FormatStrFormatter('%.1f'))
 
 fig_name = args[1]
-plt.savefig(fig_name)
+
+save_path = "./img/graph/"
+save_fig  = save_path + fig_name
+
+plt.savefig(save_fig)
 
 plt.show()
