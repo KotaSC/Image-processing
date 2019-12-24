@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
 from matplotlib import cycler
 
-
 def multi_func(x, th, dim, grad, amin, amax, fth):
 
     condlist = [x < th , (x >= th) & (x < fth), x >= fth]
@@ -21,7 +20,8 @@ plt.rc('ytick', direction='in', color='black')
 plt.rc('patch', edgecolor='#E6E6E6')
 plt.rc('lines', linewidth=2)
 
-# plt.rcParams['font.family'] = 'Times New Roman'
+plt.rcParams['font.family'] = 'Times New Roman'
+plt.rcParams['mathtext.fontset'] = 'stix'
 plt.rcParams["xtick.major.size"] = 10
 plt.rcParams["xtick.minor.size"] = 5
 plt.rcParams["ytick.major.size"] = 10
@@ -41,7 +41,7 @@ plt.yticks([0.2, 0.4, 0.6, 0.8, 1.0])
 
 # ax.set_title(r"Realation between Feature value $\hat{F}^{(i)}$ and Function ${\rm g}(\hat{F}^{(i)})$", fontsize=20)
 ax.set_xlabel(r"feature value $f$",         fontsize=22, color='black')
-ax.set_ylabel(r"opacity ${\alpha(\ f\ )}$", fontsize=22, color='black')
+ax.set_ylabel(r"opacity ${\alpha( f)}$", fontsize=22, color='black')
 
 a_max = 1.0
 a_min = 0.2
