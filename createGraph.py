@@ -38,9 +38,7 @@ ax.set_ylim([0.0, 1.0])
 plt.xticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 plt.yticks([0.2, 0.4, 0.6, 0.8, 1.0])
 
-
-# ax.set_title(r"Realation between Feature value $\hat{F}^{(i)}$ and Function ${\rm g}(\hat{F}^{(i)})$", fontsize=20)
-ax.set_xlabel(r"feature value $f$",         fontsize=22, color='black')
+ax.set_xlabel(r"feature value $f$",      fontsize=22, color='black')
 ax.set_ylabel(r"opacity ${\alpha( f)}$", fontsize=22, color='black')
 
 a_max = 1.0
@@ -55,7 +53,7 @@ x     = np.linspace(0.0, 1.0, 1000.0)
 
 y = multi_func(x, fth, d, grad, a_min, a_max, Fth)
 
-plt.plot(x,y, color='black')
+plt.plot(x, y, color='black')
 
 plt.gca().yaxis.set_major_formatter(plt.FormatStrFormatter('%.1f'))
 plt.gca().xaxis.set_major_formatter(plt.FormatStrFormatter('%.1f'))
