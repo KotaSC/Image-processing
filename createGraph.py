@@ -43,11 +43,11 @@ plt.yticks([0.2, 0.4, 0.6, 0.8, 1.0])
 ax.set_xlabel(r"feature value $f$",      fontsize=22, color='black')
 ax.set_ylabel(r"opacity ${\alpha( f)}$", fontsize=22, color='black')
 
-a_max = 0.9
-a_min = 0.0
-fth   = 0.3
-d     = 0.0
-Fth   = 1.0
+a_max = 1.0
+a_min = 0.2
+fth   = 0.05
+d     = 2.0
+Fth   = 0.2
 
 denom = Fth - fth
 grad  = (a_max-a_min)/(denom**d)
