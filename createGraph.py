@@ -28,7 +28,7 @@ plt.rcParams["xtick.major.size"] = 10
 plt.rcParams["xtick.minor.size"] = 5
 plt.rcParams["ytick.major.size"] = 10
 plt.rcParams["ytick.minor.size"] = 5
-plt.rcParams["font.size"]        = 18
+plt.rcParams["font.size"]        = 28
 
 plt.figure(figsize=(10, 8))
 ax = plt.axes(facecolor='white')
@@ -37,26 +37,17 @@ ax.set_axisbelow(True)
 ax.set_xlim([0.0, 1.0])
 ax.set_ylim([0.0, 1.0])
 
-# plt.xticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
-# plt.yticks([0.2, 0.4, 0.6, 0.8, 1.0])
+plt.xticks([0.0, 1.0])
+plt.yticks([1.0])
 
-# plt.xticks([0.0, 1.0])
-# plt.yticks([1.0])
+ax.set_xlabel(r"3D feature value $f$",   fontsize=28, color='black')
+ax.set_ylabel(r"opacity ${\alpha( f)}$", fontsize=28, color='black')
 
-plt.xticks([0.0])
-plt.yticks([])
-
-ax.yaxis.set_label_coords(-0.05, 0.5)
-
-ax.set_xlabel(r"feature value $f$",      fontsize=22, color='black')
-ax.set_ylabel(r"opacity ${\alpha( f)}$", fontsize=22, color='black')
-
-
-a_max = 1.0
+a_max = 0.9
 a_min = 0.2
-fth   = 0.3
+fth   = 0.2
 d     = 2.0
-Fth   = 1.0
+Fth   = 0.5
 
 denom = Fth - fth
 grad  = (a_max-a_min)/(denom**d)
@@ -66,13 +57,14 @@ y = multi_func(x, fth, d, grad, a_min, a_max, Fth)
 
 plt.plot(x, y, color='black')
 
-ax.plot([0.3, 0.3], [0.0, 0.2], ls="--", color="black")
+ax.plot([fth, fth], [0.0, a_min], ls="--", color="black")
+ax.plot([Fth, Fth], [0.0, a_max], ls="--", color="black")
 
-plt.text(fth-0.017, -0.04, r"$f_{\rm th}$")
-plt.text(Fth-0.017, -0.04, r"$F_{\rm th}$")
+plt.text(fth-0.017, -0.05, r"$f_{\rm th}$")
+plt.text(Fth-0.017, -0.05, r"$F_{\rm th}$")
 
-plt.text(-0.065, a_min-0.01, r"$\alpha_{\rm min}$")
-plt.text(-0.065, a_max-0.01, r"$\alpha_{\rm max}$")
+plt.text(-0.09, a_min-0.01, r"$\alpha_{\rm min}$")
+plt.text(-0.095, a_max-0.01, r"$\alpha_{\rm max}$")
 
 
 plt.gca().yaxis.set_major_formatter(plt.FormatStrFormatter('%.1f'))
