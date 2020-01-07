@@ -1,3 +1,4 @@
+from matplotlib.patches import ArrowStyle
 import numpy as np
 import cv2
 import sys
@@ -50,17 +51,35 @@ def main():
     half_val = max( val ) * 0.5
     max_val  = max( val )
 
-    ax.set_xlim([0, height-1])
+    ax.set_xlim([2.0, height-3])
     ax.set_ylim([0, 255])
 
-    plt.xticks([0.0, 4.0, 8.0, 12.0, 16.0, 20.0])
-    plt.yticks([50, 100, 150, 200, 250])
+    plt.xticks([])
+    plt.yticks([0.0, 255])
+    
+    arrowStyle = ArrowStyle('simple')
 
-    ax.plot( val, color='black')
+    ax.annotate('', xy=(4.05, half_val), xytext=(8, half_val), 
+                arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
+                                facecolor='black', edgecolor='black')
+                )
+    ax.annotate('', xy=(11, half_val), xytext=(7.93, half_val),
+                arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
+                                facecolor='black', edgecolor='black')
+                )
 
+    ax.plot([8.0, 0.0], [max_val, max_val],   ls="--", color="black")
+    ax.plot([4.0, 0.0], [half_val, half_val], ls="--", color="black")
 
-    ax.set_xlabel( "horizontal direction", fontsize=22, color='black' )
-    ax.set_ylabel( "pixel Value", fontsize=22, color='black' )
+    plt.text(1.05, max_val-4,      r"$\rm max$", fontsize=25)
+    plt.text(1.15, half_val - 3.8, r"$\frac{\rm max}{2}$", fontsize=32)
+        
+    plt.text(5.8, half_val-17, "half-value width")
+
+    ax.plot(val, color='black')
+
+    ax.set_xlabel( "horizontal direction", fontsize=28, color='black' )
+    ax.set_ylabel( "pixel Value", fontsize=28, color='black' )
 
     fig_name = args[2]
 

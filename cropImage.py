@@ -13,14 +13,14 @@ def main():
     height, width = img.shape[0], img.shape[1]
 
     print('クロッピングの開始位置を入力してください')
-    start_x = input('x座標(0 <= x <= ' + str(width)  + ') >>')
-    start_y = input('y座標(0 <= y <= ' + str(height) + ') >>')
+    start_x = input('x座標(0 <= x <= ' + str(width)  + ') >> ')
+    start_y = input('y座標(0 <= y <= ' + str(height) + ') >> ')
 
     print('\n')
 
     print('クロッピングする幅・高さを入力してください')
-    w = input('幅   >>')
-    h = input('高さ >>')
+    w = input('幅   >> ')
+    h = input('高さ >> ')
 
     # 画像のクロッピング
     crop_image = img[int(start_y):int(start_y)+int(h), int(start_x):int(start_x)+int(w)]
