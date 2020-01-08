@@ -1,3 +1,5 @@
+from matplotlib import cycler
+import scipy.interpolate as interpolate
 from matplotlib.patches import ArrowStyle
 import numpy as np
 import cv2
@@ -5,7 +7,7 @@ import sys
 args = sys.argv
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
-from matplotlib import cycler
+
 
 def main():
 
@@ -46,7 +48,12 @@ def main():
     # 画像の縦幅と横幅を求める
     height, width = gray_img.shape[0], gray_img.shape[1]
 
-    val = calc_half_width( gray_img, height, width )
+    val = calc_half_width(gray_img, height, width)
+
+    x = list(range(2, 14))
+    y = val[2:14]
+
+    a, b = spline(x, y, 100)
 
     half_val = max( val ) * 0.5
     max_val  = max( val )
@@ -56,10 +63,10 @@ def main():
 
     plt.xticks([])
     plt.yticks([0.0, 255])
-    
+
     arrowStyle = ArrowStyle('simple')
 
-    ax.annotate('', xy=(4.05, half_val), xytext=(8, half_val), 
+    ax.annotate('', xy=(4.05, half_val), xytext=(8, half_val),
                 arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
                                 facecolor='black', edgecolor='black')
                 )
@@ -68,15 +75,15 @@ def main():
                                 facecolor='black', edgecolor='black')
                 )
 
-    ax.plot([8.0, 0.0], [max_val, max_val],   ls="--", color="black")
+    ax.plot([7.5, 0.0], [max_val+2, max_val+2],   ls="--", color="black")
     ax.plot([4.0, 0.0], [half_val, half_val], ls="--", color="black")
 
-    plt.text(1.05, max_val-4,      r"$\rm max$", fontsize=25)
+    plt.text(1.08, max_val-2,      r"$\rm max$", fontsize=25)
     plt.text(1.15, half_val - 3.8, r"$\frac{\rm max}{2}$", fontsize=32)
-        
+
     plt.text(5.8, half_val-17, "half-value width")
 
-    ax.plot(val, color='black')
+    ax.plot(a, b, color='black')
 
     ax.set_xlabel( "horizontal direction", fontsize=28, color='black' )
     ax.set_ylabel( "pixel Value", fontsize=28, color='black' )
@@ -104,6 +111,13 @@ def calc_half_width( gray, h, w ):
         value.append( sumx/w )
 
     return value
+
+def spline(x, y, point):
+
+    f = interpolate.Akima1DInterpolator( x, y )
+    X = np.linspace( x[0], x[-1], num=point, endpoint=True )
+    Y = f( X )
+    return X, Y
 
 if __name__ == "__main__":
     main()
