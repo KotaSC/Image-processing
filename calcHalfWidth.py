@@ -64,26 +64,36 @@ def main():
     plt.xticks([])
     plt.yticks([0.0, 255])
 
-    arrowStyle = ArrowStyle('simple')
+    arrowStyle = ArrowStyle('simple', head_length=0.3, head_width=0.3, tail_width=0.1)
 
-    ax.annotate('', xy=(4.05, half_val), xytext=(8, half_val),
-                arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
-                                facecolor='black', edgecolor='black')
-                )
-    ax.annotate('', xy=(11, half_val), xytext=(7.93, half_val),
-                arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
-                                facecolor='black', edgecolor='black')
-                )
+    # ax.annotate('', xy=(4.05, half_val), xytext=(8, half_val),
+    #             arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
+    #                             facecolor='black', edgecolor='black')
+    #             )
+    # ax.annotate('', xy=(11, half_val), xytext=(7.93, half_val),
+    #             arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
+    #                             facecolor='black', edgecolor='black')
+    #             )
 
-    ax.plot([7.5, 0.0], [max_val+2, max_val+2],   ls="--", color="black")
-    ax.plot([4.0, 0.0], [half_val, half_val], ls="--", color="black")
+    # ax.annotate('', xy=(2.78, half_val), xytext=(8, half_val),
+    #             arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
+    #                             facecolor='black', edgecolor='black')
+    #             )
+    # ax.annotate('', xy=(12.3, half_val), xytext=(7.93, half_val),
+    #             arrowprops=dict(connectionstyle='arc3', arrowstyle=arrowStyle,
+    #                             facecolor='black', edgecolor='black')
+    #             )
 
-    plt.text(1.08, max_val-2,      r"$\rm max$", fontsize=25)
-    plt.text(1.15, half_val - 3.8, r"$\frac{\rm max}{2}$", fontsize=32)
+    # ax.plot([7.5, 0.0], [max_val+2, max_val+2],   ls="--", color="black")
+    # ax.plot([4.0, 0.0], [half_val, half_val], ls="--", color="black")
 
-    plt.text(5.8, half_val-17, "half-value width")
+    # plt.text(1.08, max_val-2,      r"$\rm max$", fontsize=25)
+    # plt.text(1.15, half_val - 3.8, r"$\frac{\rm max}{2}$", fontsize=32)
+
+    # plt.text(5.8, half_val-17, "half-value width")
 
     ax.plot(a, b, color='black')
+    # ax.plot(val, color='black')
 
     ax.set_xlabel( "horizontal direction", fontsize=28, color='black' )
     ax.set_ylabel( "pixel Value", fontsize=28, color='black' )
